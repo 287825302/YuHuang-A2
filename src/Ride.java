@@ -7,22 +7,26 @@ public class Ride {
 
     // 默认构造函数
     public Ride() {
+        this("Unknown", 0, null);
     }
 
     // 带参数的构造函数
     public Ride(String rideName, int capacity, Employee operator) {
-        this.rideName = rideName;
-        this.capacity = capacity;
-        this.operator = operator;
+        setRideName(rideName);
+        setCapacity(capacity);
+        setOperator(operator);
     }
 
-    // Getters and setters
+    // Getters and setters with input validation
     public String getRideName() {
         return rideName;
     }
 
     public void setRideName(String rideName) {
-        this.rideName = rideName;
+        if (rideName == null || rideName.trim().isEmpty()) {
+            throw new IllegalArgumentException("Ride name cannot be null or empty");
+        }
+        this.rideName = rideName.trim();
     }
 
     public int getCapacity() {
@@ -30,6 +34,9 @@ public class Ride {
     }
 
     public void setCapacity(int capacity) {
+        if (capacity < 0) {
+            throw new IllegalArgumentException("Capacity must be non-negative");
+        }
         this.capacity = capacity;
     }
 
@@ -43,11 +50,8 @@ public class Ride {
 
     @Override
     public String toString() {
-        return "Ride{" +
-                "rideName='" + rideName + '\'' +
-                ", capacity=" + capacity +
-                ", operator=" + operator +
-                '}';
+        return String.format("Ride{rideName='%s', capacity=%d, operator=%s}",
+                rideName, capacity, operator);
     }
 
     @Override
@@ -55,7 +59,9 @@ public class Ride {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ride ride = (Ride) o;
-        return capacity == ride.capacity && Objects.equals(rideName, ride.rideName) && Objects.equals(operator, ride.operator);
+        return capacity == ride.capacity &&
+                Objects.equals(rideName, ride.rideName) &&
+                Objects.equals(operator, ride.operator);
     }
 
     @Override
