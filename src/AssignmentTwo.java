@@ -1,11 +1,11 @@
 public class AssignmentTwo {
     public static void main(String[] args) {
         // 主方法，您可以在这里测试其他类
+        
     }
 
-    public void partThree() {
-        // 第三部分的代码将在这里实现
-    }
+
+
 
     public void partFourA() {
         // 第四部分A的代码将在这里实现
