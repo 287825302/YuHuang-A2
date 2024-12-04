@@ -6,13 +6,17 @@ public class Ride implements RideInterface {
     private String rideName;
     private int capacity;
     private Employee operator;
+
+
     private Queue<Visitor> waitingLine;
+    private Queue<Visitor> VipWaitingLine;
     private LinkedList<Visitor> rideHistory;
 
     public Ride(String rideName, int capacity, Employee operator) {
         this.rideName = rideName;
         this.capacity = capacity;
         this.operator = operator;
+        this.VipWaitingLine = new LinkedList<>();
         this.waitingLine = new LinkedList<>();
         this.rideHistory = new LinkedList<>();
     }
@@ -47,19 +51,40 @@ public class Ride implements RideInterface {
         this.operator = operator;
     }
 
+    //我额外添加了vip的队列，提供了和特惠票不一样的地方，保证买了VIP能得到提前玩的权力
+    //I added an additional VIP queue to provide a different place from
+    // he special ticket to ensure that I can get the right to play in advance when I buy a VIP
     @Override
     public void addVisitorToQueue(Visitor visitor) {
+        if (visitor!= null &&visitor.getTicketType().contains("VIP")){
+        VipWaitingLine.offer(visitor);
+        return;}
+
         waitingLine.offer(visitor);
     }
 
+    //VIP能得到提前玩的权力
+    //VIP can get the right to play in advance
+
     @Override
     public void removeVisitorFromQueue() {
-        waitingLine.poll();
+        if (VipWaitingLine != null && !VipWaitingLine.isEmpty()) {
+            VipWaitingLine.poll();
+        } else if (waitingLine != null && !waitingLine.isEmpty()) {
+            waitingLine.poll();
+        }
     }
 
     @Override
     public void printQueue() {
         System.out.println("Waiting line for " + rideName + ":");
+
+        for (Visitor vip : VipWaitingLine){
+            System.out.println(vip);
+        }
+        System.out.println("The above is the vip queue");
+        System.out.println("----------------------------");
+
         for (Visitor visitor : waitingLine) {
             System.out.println(visitor);
         }
