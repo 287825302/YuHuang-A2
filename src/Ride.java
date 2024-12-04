@@ -228,6 +228,17 @@ public class Ride implements RideInterface {
             System.out.println("Error importing ride history: " + e.getMessage());
         }
     }
+    public void exportRideHistory2(String fileName) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            for (Visitor visitor : rideHistory) {
+                writer.write(visitor.toString());
+                writer.newLine();
+            }
+            System.out.println("Ride history exported successfully to " + fileName);
+        } catch (IOException e) {
+            System.err.println("Error exporting ride history: " + e.getMessage());
+        }
+    }
 
     @Override
     public String toString() {

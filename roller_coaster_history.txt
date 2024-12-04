@@ -1,0 +1,5 @@
+Alice,25,Female,165.0,Standard,true,0
+Bob,30,Male,180.0,VIP,false,0
+Charlie,22,Male,175.0,Standard,true,0
+Diana,28,Female,170.0,VIP,true,0
+Ethan,33,Male,185.0,Standard,false,0

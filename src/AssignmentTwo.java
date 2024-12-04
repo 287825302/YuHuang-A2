@@ -1,8 +1,8 @@
 public class AssignmentTwo {
     public static void main(String[] args) {
         // 主方法，您可以在这里测试其他类
-        demonstrateIO();
-        partFive();
+
+        partSix();
     }
 
     public  static void partThree() {
@@ -192,8 +192,27 @@ public class AssignmentTwo {
 
 
 
-    public void partSix() {
+    public  static void partSix() {
         // 第六部分的代码将在这里实现
+        System.out.println("\nDemonstrating Part 6 - Writing to a file");
+
+        // 创建一个新的Ride
+        Employee operator = new Employee("John Doe", 35, "Male", 180.0, "EMP001", "Rides");
+        Ride rollerCoaster = new Ride("Mega Coaster", 40, operator, 4);
+
+        // 添加至少5个访客到Ride
+        rollerCoaster.addVisitorToHistory(new Visitor("Alice", 25, "Female", 165.0, "Standard", true));
+        rollerCoaster.addVisitorToHistory(new Visitor("Bob", 30, "Male", 180.0, "VIP", false));
+        rollerCoaster.addVisitorToHistory(new Visitor("Charlie", 22, "Male", 175.0, "Standard", true));
+        rollerCoaster.addVisitorToHistory(new Visitor("Diana", 28, "Female", 170.0, "VIP", true));
+        rollerCoaster.addVisitorToHistory(new Visitor("Ethan", 33, "Male", 185.0, "Standard", false));
+
+        // 导出访客到文件
+        rollerCoaster.exportRideHistory("roller_coaster_history.txt");
+
+        // 打印当前的乘坐历史以验证
+        System.out.println("\nCurrent ride history:");
+        rollerCoaster.printRideHistory();
     }
 
     public void partSeven() {
