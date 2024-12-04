@@ -4,11 +4,26 @@ public class Visitor extends Person {
     private String ticketType;
     private boolean hasPassport;
 
+    private int TimesOfPlay;
+
     // 默认构造函数
     public Visitor() {
         super();
         this.ticketType = "Standard";
         this.hasPassport = false;
+        this.TimesOfPlay=0;
+    }
+
+    public boolean isHasPassport() {
+        return hasPassport;
+    }
+
+    public int getTimesOfPlay() {
+        return TimesOfPlay;
+    }
+
+    public void setTimesOfPlay(int timesOfPlay) {
+        TimesOfPlay = timesOfPlay;
     }
 
     // 带参数的构造函数
@@ -16,6 +31,7 @@ public class Visitor extends Person {
         super(name, age, gender, height);
         setTicketType(ticketType);
         setHasPassport(hasPassport);
+        this.TimesOfPlay=0;
     }
 
     // Getters and setters with input validation

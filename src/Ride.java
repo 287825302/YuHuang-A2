@@ -1,7 +1,4 @@
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Objects;
-import java.util.Queue;
+import java.util.*;
 
 public class Ride implements RideInterface {
     private String rideName;
@@ -103,7 +100,14 @@ public class Ride implements RideInterface {
 
     @Override
     public void addVisitorToHistory(Visitor visitor) {
-        rideHistory.add(visitor);
+        if (visitor.getTimesOfPlay()==0){
+            rideHistory.add(visitor);
+        }else {
+            visitor.setTimesOfPlay(visitor.getTimesOfPlay()+1);
+            rideHistory.add(visitor);
+
+        }
+
     }
 
     @Override
@@ -138,6 +142,11 @@ public class Ride implements RideInterface {
 
         System.out.println("Total VIP visitors: " + vipNum);
         System.out.println("Total ordinary visitors: " + noVipNum);
+    }
+
+    public void sortVisitorHistory() {
+        Collections.sort(rideHistory, new VisitorComparator());
+        System.out.println("Visitor history has been sorted.");
     }
 
     @Override

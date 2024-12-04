@@ -1,7 +1,7 @@
 public class AssignmentTwo {
     public static void main(String[] args) {
         // 主方法，您可以在这里测试其他类
-        partFourA();
+        partFourB();
     }
 
     public  static void partThree() {
@@ -84,9 +84,45 @@ public class AssignmentTwo {
 
     }
 
-    public void partFourB() {
+    public  static void partFourB() {
         // 第四部分B的代码将在这里实现
-    }
+
+
+            System.out.println("Demonstrating Part 4B - Sorting the collection");
+
+            // 创建一个新的Ride对象
+            Employee operator = new Employee("Alex Brown", 32, "Male", 178.0, "EMP003", "Rides");
+            Ride rollerCoaster = new Ride("Cyclone", 4, operator);
+            System.out.println("Created new Ride: " + rollerCoaster.getRideName());
+
+            // 创建访客
+            Visitor v1 = new Visitor("Zoe", 28, "Female", 165.0, "Standard", true);
+            Visitor v2 = new Visitor("Yara", 35, "Female", 170.0, "VIP", false);
+            Visitor v3 = new Visitor("Xavier", 22, "Male", 180.0, "Standard", true);
+            Visitor v4 = new Visitor("William", 40, "Male", 175.0, "VIP", true);
+            Visitor v5 = new Visitor("Victoria", 30, "Female", 168.0, "Standard", false);
+
+            // 添加访客到乘坐历史
+            System.out.println("\nAdding visitors to ride history:");
+            rollerCoaster.addVisitorToHistory(v1);
+            rollerCoaster.addVisitorToHistory(v2);
+            rollerCoaster.addVisitorToHistory(v3);
+            rollerCoaster.addVisitorToHistory(v4);
+            rollerCoaster.addVisitorToHistory(v5);
+
+            // 打印未排序的乘坐历史
+            System.out.println("\nPrinting unsorted ride history:");
+            rollerCoaster.printRideHistory();
+
+            // 排序乘坐历史
+            System.out.println("\nSorting ride history:");
+            rollerCoaster.sortVisitorHistory();
+
+            // 打印排序后的乘坐历史
+            System.out.println("\nPrinting sorted ride history:");
+            rollerCoaster.printRideHistory();
+        }
+
 
     public void partFive() {
         // 第五部分的代码将在这里实现
