@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
@@ -117,10 +118,26 @@ public class Ride implements RideInterface {
 
     @Override
     public void printRideHistory() {
-        System.out.println("Ride history for " + rideName + ":");
-        for (Visitor visitor : rideHistory) {
-            System.out.println(visitor);
+        if (rideHistory == null || rideHistory.isEmpty()) {
+            System.out.println("No ride history available for " + rideName + ".");
+            return;
         }
+
+        int vipNum = 0;
+        int noVipNum = 0;
+
+        System.out.println("Ride history for " + rideName + ":");
+        Iterator<Visitor> iterator = rideHistory.iterator();
+        while (iterator.hasNext()) {
+            Visitor visitor = iterator.next();
+            System.out.println(visitor);
+            if (visitor.getTicketType().equalsIgnoreCase("VIP")) {
+                vipNum++;
+            }else {noVipNum++;}
+        }
+
+        System.out.println("Total VIP visitors: " + vipNum);
+        System.out.println("Total ordinary visitors: " + noVipNum);
     }
 
     @Override

@@ -1,7 +1,7 @@
 public class AssignmentTwo {
     public static void main(String[] args) {
         // 主方法，您可以在这里测试其他类
-        partThree();
+        partFourA();
     }
 
     public  static void partThree() {
@@ -45,8 +45,43 @@ public class AssignmentTwo {
 
 
 
-    public void partFourA() {
+    public  static void partFourA() {
         // 第四部分A的代码将在这里实现
+        System.out.println("Demonstrating Part 4A - Collection class (LinkedList)");
+
+        // 创建一个新的Ride对象
+        Employee operator = new Employee("Jane Smith", 28, "Female", 170.0, "EMP002", "Rides");
+        Ride ferrisWheel = new Ride("Giant Wheel", 6, operator);
+        System.out.println("Created new Ride: " + ferrisWheel.getRideName());
+
+        // 创建访客
+        Visitor v1 = new Visitor("Frank", 40, "Male", 185.0, "VIP", true);
+        Visitor v2 = new Visitor("Grace", 35, "Female", 160.0, "Standard", true);
+        Visitor v3 = new Visitor("Henry", 28, "Male", 175.0, "Standard", false);
+        Visitor v4 = new Visitor("Ivy", 22, "Female", 165.0, "VIP", true);
+        Visitor v5 = new Visitor("Jack", 31, "Male", 180.0, "Standard", true);
+
+        // 添加访客到乘坐历史
+        System.out.println("\nAdding visitors to ride history:");
+        ferrisWheel.addVisitorToHistory(v1);
+        ferrisWheel.addVisitorToHistory(v2);
+        ferrisWheel.addVisitorToHistory(v3);
+        ferrisWheel.addVisitorToHistory(v4);
+        ferrisWheel.addVisitorToHistory(v5);
+
+        // 检查访客是否在乘坐历史中
+        System.out.println("\nChecking if Frank is in the ride history:");
+        boolean isInHistory = ferrisWheel.checkVisitorFromHistory(v1);
+        System.out.println("Frank is in ride history: " + isInHistory);
+
+        // 打印乘坐历史中的访客数量
+        System.out.println("\nNumber of visitors in ride history:");
+        System.out.println(ferrisWheel.numberOfVisitors());
+
+        // 打印所有在乘坐历史中的访客
+        System.out.println("\nPrinting all visitors in ride history:");
+        ferrisWheel.printRideHistory();
+
     }
 
     public void partFourB() {
