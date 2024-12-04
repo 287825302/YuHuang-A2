@@ -1,4 +1,6 @@
 import java.util.*;
+import java.io.*;
+import java.util.Scanner;
 
 public class Ride implements RideInterface {
     private String rideName;
@@ -191,6 +193,40 @@ public class Ride implements RideInterface {
     public void sortVisitorHistory() {
         Collections.sort(rideHistory, new VisitorComparator());
         System.out.println("Visitor history has been sorted.");
+    }
+
+    public void exportRideHistory(String fileName) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
+            for (Visitor visitor : rideHistory) {
+                writer.println(visitor.getName() + "," + visitor.getAge() + "," + visitor.getGender() + "," +
+                        visitor.getHeight() + "," + visitor.getTicketType() + "," + visitor.hasPassport() + "," +
+                        visitor.getTimesOfPlay());
+            }
+            System.out.println("Ride history exported to " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error exporting ride history: " + e.getMessage());
+        }
+    }
+    public LinkedList<Visitor> getRideHistory() {
+        return rideHistory;
+    }
+    public void importRideHistory(String fileName) {
+        rideHistory.clear(); // Clear existing history before importing
+        try (Scanner scanner = new Scanner(new File(fileName))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] data = line.split(",");
+                if (data.length == 7) {
+                    Visitor visitor = new Visitor(data[0], Integer.parseInt(data[1]), data[2],
+                            Double.parseDouble(data[3]), data[4], Boolean.parseBoolean(data[5]));
+                    visitor.setTimesOfPlay(Integer.parseInt(data[6]));
+                    rideHistory.add(visitor);
+                }
+            }
+            System.out.println("Ride history imported from " + fileName);
+        } catch (FileNotFoundException e) {
+            System.out.println("Error importing ride history: " + e.getMessage());
+        }
     }
 
     @Override
