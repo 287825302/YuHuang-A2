@@ -5,18 +5,38 @@ public class Ride implements RideInterface {
     private int capacity;
     private Employee operator;
 
+    private int maxRider;
+    private int numOfCycles;
+
+    public Ride() {
+    }
 
     private Queue<Visitor> waitingLine;
     private Queue<Visitor> VipWaitingLine;
     private LinkedList<Visitor> rideHistory;
 
+    public Ride(String rideName, int capacity, Employee operator,int maxRider) {
+        this.rideName = rideName;
+        this.capacity = capacity;
+        this.operator = operator;
+        this.maxRider = maxRider;
+        this.numOfCycles = 0;
+        this.VipWaitingLine = new LinkedList<>();
+        this.waitingLine = new LinkedList<>();
+        this.rideHistory = new LinkedList<>();
+
+    }
+
     public Ride(String rideName, int capacity, Employee operator) {
         this.rideName = rideName;
         this.capacity = capacity;
         this.operator = operator;
+        this.maxRider = maxRider=10;
+        this.numOfCycles = 0;
         this.VipWaitingLine = new LinkedList<>();
         this.waitingLine = new LinkedList<>();
         this.rideHistory = new LinkedList<>();
+
     }
 
     public String getRideName() {
@@ -88,14 +108,38 @@ public class Ride implements RideInterface {
         }
     }
 
+
     @Override
     public void runOneCycle() {
-        int visitorCount = Math.min(capacity, waitingLine.size());
-        for (int i = 0; i < visitorCount; i++) {
-            Visitor visitor = waitingLine.poll();
-            addVisitorToHistory(visitor);
+        if (operator == null) {
+            System.out.println("No operator assigned. Ride cannot run.");
+            return;
         }
-        System.out.println("Ride " + rideName + " completed one cycle with " + visitorCount + " visitors.");
+        if (VipWaitingLine.isEmpty() && waitingLine.isEmpty()) {
+            System.out.println("No waiting visitors. Ride cannot run.");
+            return;
+        }
+
+        int ridersThisCycle = 0;
+
+
+        // 优先处理 VIP 队列
+        ridersThisCycle = Math.min(maxRider, VipWaitingLine.size());
+        for (int i = 0; i < ridersThisCycle; i++) {
+            Visitor rider = VipWaitingLine.poll();
+            addVisitorToHistory(rider);
+        }
+
+        // 如果还有空位，处理普通队列
+        int remainingCapacity = maxRider - ridersThisCycle;
+        for (int i = 0; i < remainingCapacity && !waitingLine.isEmpty(); i++) {
+            Visitor rider = waitingLine.poll();
+            addVisitorToHistory(rider);
+            ridersThisCycle++;
+        }
+
+        numOfCycles++;
+        System.out.println("Ride cycle completed. " + ridersThisCycle + " visitors rode the " + rideName);
     }
 
     @Override

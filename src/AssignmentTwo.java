@@ -1,7 +1,7 @@
 public class AssignmentTwo {
     public static void main(String[] args) {
         // 主方法，您可以在这里测试其他类
-        partFourB();
+        partFive();
     }
 
     public  static void partThree() {
@@ -124,8 +124,38 @@ public class AssignmentTwo {
         }
 
 
-    public void partFive() {
+    public static void partFive() {
         // 第五部分的代码将在这里实现
+        System.out.println("Demonstrating Part 5 - Run a ride cycle");
+
+        Employee operator = new Employee("John Doe", 35, "Male", 180.0, "EMP001", "Rides");
+        Ride rollerCoaster = new Ride("Thunderbolt", 4, operator,5);
+
+        // 添加至少10个访客到队列
+        for (int i = 1; i <= 11; i++) {
+
+            if (i%2==0){
+                Visitor v = new Visitor("Visitor" + i, 20 + i, (i % 2 == 0 ? "Male" : "Female"), 160.0 + i, "Standard", true);
+                rollerCoaster.addVisitorToQueue(v);
+            }else {
+                Visitor v = new Visitor("Visitor" + i, 20 + i, (i % 2 == 0 ? "Male" : "Female"), 160.0 + i, "VIP", true);
+                rollerCoaster.addVisitorToQueue(v);
+            }
+
+        }
+
+        System.out.println("\nPrinting all visitors in the queue:");
+        rollerCoaster.printQueue();
+
+        System.out.println("\nRunning one cycle:");
+        rollerCoaster.runOneCycle();
+
+        System.out.println("\nPrinting visitors in the queue after one cycle:");
+        System.out.println("-------------------");
+        rollerCoaster.printQueue();
+
+        System.out.println("\nPrinting visitors in the ride history:");
+        rollerCoaster.printRideHistory();
     }
 
     public void partSix() {
