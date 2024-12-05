@@ -3,7 +3,7 @@ import java.io.IOException;
 public class AssignmentTwo {
     public static void main(String[] args) throws IOException {
         // 主方法，您可以在这里测试其他类
-        partSix();
+        partSeven();
 
 
 
@@ -184,12 +184,37 @@ public class AssignmentTwo {
         // 打印当前的乘坐历史以验证
         System.out.println("\nCurrent ride history:");
         try {
-            rollerCoaster. outToHistory();
+            rollerCoaster. importRideHistory();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
+    public static void partSeven() {
+        System.out.println("Demonstrating Part 7 - REading to a file");
 
+        // 创建一个新的Ride
+        Employee operator = new Employee("John Doe", 35, "Male", 180.0, "EMP001", "Rides");
+        Ride rollerCoaster = new Ride("Mega Coaster", 40, operator, 4);
+
+        // 添加至少5个访客到Ride
+        rollerCoaster.addVisitorToHistory(new Visitor("Alice", 25, "Female", 165.0, "Standard", true));
+        rollerCoaster.addVisitorToHistory(new Visitor("Bob", 30, "Male", 180.0, "VIP", false));
+        rollerCoaster.addVisitorToHistory(new Visitor("Charlie", 22, "Male", 175.0, "Standard", true));
+        rollerCoaster.addVisitorToHistory(new Visitor("Diana", 28, "Female", 170.0, "VIP", true));
+        rollerCoaster.addVisitorToHistory(new Visitor("Ethan", 33, "Male", 185.0, "Standard", false));
+
+        // 导出访客到文件
+        rollerCoaster.runOneCycle();
+
+        // 打印当前的乘坐历史以验证
+        System.out.println("\nCurrent ride history:");
+        try {
+            rollerCoaster.importRideHistory();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
 }

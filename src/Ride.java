@@ -236,7 +236,7 @@ public class Ride implements RideInterface {
 
     }
 
-    public  void  outToHistory() throws IOException {
+    public  void  importRideHistory() throws IOException {
         System.out.println("----------The following is the history record saving file reading-----------");
       FileInputStream READ= new FileInputStream("History.csv");
       BufferedInputStream BI = new BufferedInputStream(READ);

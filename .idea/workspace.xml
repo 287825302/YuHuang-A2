@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93d183d0-c6c6-481a-ba1c-224269b7c852" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuHuang-A2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuHuang-A2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/YuHuang-A2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YuHuang-A3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ferris_wheel_history.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/YuHuang-A2/AssignmentTwo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/YuHuang-A2/AssignmentTwo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/YuHuang-A2/Ride.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/YuHuang-A2/Ride.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roller_coaster_history.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AssignmentTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssignmentTwo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ride.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ride.java" afterDir="false" />
     </list>
@@ -78,7 +72,7 @@
       <updated>1733154432570</updated>
       <workItem from="1733154433483" duration="3755000" />
       <workItem from="1733281108688" duration="33410000" />
-      <workItem from="1733390807313" duration="1442000" />
+      <workItem from="1733390807313" duration="2289000" />
     </task>
     <servers />
   </component>
