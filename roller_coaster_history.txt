@@ -1,5 +1,0 @@
-Visitor{Person{name='Alice', age=25, gender='Female', height=165.00}, ticketType='Standard', hasPassport=true}
-Visitor{Person{name='Bob', age=30, gender='Male', height=180.00}, ticketType='VIP', hasPassport=false}
-Visitor{Person{name='Charlie', age=22, gender='Male', height=175.00}, ticketType='Standard', hasPassport=true}
-Visitor{Person{name='Diana', age=28, gender='Female', height=170.00}, ticketType='VIP', hasPassport=true}
-Visitor{Person{name='Ethan', age=33, gender='Male', height=185.00}, ticketType='Standard', hasPassport=false}

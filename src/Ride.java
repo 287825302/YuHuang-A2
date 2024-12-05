@@ -169,7 +169,7 @@ public class Ride implements RideInterface {
 
 
         try {
-            inToHistory(rideHistory);
+            exportRideHistory(rideHistory);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -217,7 +217,7 @@ public class Ride implements RideInterface {
     }
 
 
-    public void inToHistory(List<Visitor> Queue) throws Exception{
+    public void  exportRideHistory(List<Visitor> Queue) throws Exception{
 
         try (PrintWriter writer = new PrintWriter(new FileWriter("History.csv"))) {
             for (Visitor visitor : Queue) {

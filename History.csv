@@ -1,5 +1,5 @@
-Visitor1,21,Female,161.0,VIP,true
-Visitor3,23,Female,163.0,VIP,true
-Visitor5,25,Female,165.0,VIP,true
-Visitor7,27,Female,167.0,VIP,true
-Visitor9,29,Female,169.0,VIP,true
+Alice,25,Female,165.0,Standard,true
+Bob,30,Male,180.0,VIP,false
+Charlie,22,Male,175.0,Standard,true
+Diana,28,Female,170.0,VIP,true
+Ethan,33,Male,185.0,Standard,false
