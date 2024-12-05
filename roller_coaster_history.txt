@@ -1,5 +1,5 @@
-Alice,25,Female,165.0,Standard,true,0
-Bob,30,Male,180.0,VIP,false,0
-Charlie,22,Male,175.0,Standard,true,0
-Diana,28,Female,170.0,VIP,true,0
-Ethan,33,Male,185.0,Standard,false,0
+Visitor{Person{name='Alice', age=25, gender='Female', height=165.00}, ticketType='Standard', hasPassport=true}
+Visitor{Person{name='Bob', age=30, gender='Male', height=180.00}, ticketType='VIP', hasPassport=false}
+Visitor{Person{name='Charlie', age=22, gender='Male', height=175.00}, ticketType='Standard', hasPassport=true}
+Visitor{Person{name='Diana', age=28, gender='Female', height=170.00}, ticketType='VIP', hasPassport=true}
+Visitor{Person{name='Ethan', age=33, gender='Male', height=185.00}, ticketType='Standard', hasPassport=false}

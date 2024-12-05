@@ -98,21 +98,31 @@ public class Ride implements RideInterface {
     @Override
     public void printQueue() {
         System.out.println("Waiting line for " + rideName + ":");
-
+        int v =0;
+        int c =0;
         for (Visitor vip : VipWaitingLine){
             System.out.println(vip);
+            v++;
         }
-        System.out.println("The above is the vip queue");
+        System.out.print("The above is the vip queue");
+        System.out.println("-------The number of VIP queue members is:"+v);
         System.out.println("----------------------------");
 
         for (Visitor visitor : waitingLine) {
             System.out.println(visitor);
+            c++;
         }
+        System.out.print("The above is the common queue");
+        System.out.println("-------The number of com queue members is:"+c);
+        System.out.println("----------------------------");
     }
 
 
     @Override
     public void runOneCycle() {
+        System.out.println("********************************************************");
+        System.out.println("*                                                      *");
+        play();
         if (operator == null) {
             System.out.println("No operator assigned. Ride cannot run.");
             return;
@@ -142,6 +152,9 @@ public class Ride implements RideInterface {
 
         numOfCycles++;
         System.out.println("Ride cycle completed. " + ridersThisCycle + " visitors rode the " + rideName);
+        System.out.println("*                                                      *");
+        System.out.println("********************************************************");
+
     }
 
     @Override
@@ -153,6 +166,14 @@ public class Ride implements RideInterface {
             rideHistory.add(visitor);
 
         }
+
+
+        try {
+            inToHistory(rideHistory);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
@@ -195,50 +216,45 @@ public class Ride implements RideInterface {
         System.out.println("Visitor history has been sorted.");
     }
 
-    public void exportRideHistory(String fileName) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
-            for (Visitor visitor : rideHistory) {
-                writer.println(visitor.getName() + "," + visitor.getAge() + "," + visitor.getGender() + "," +
-                        visitor.getHeight() + "," + visitor.getTicketType() + "," + visitor.hasPassport() + "," +
-                        visitor.getTimesOfPlay());
+
+    public void inToHistory(List<Visitor> Queue) throws Exception{
+
+        try (PrintWriter writer = new PrintWriter(new FileWriter("History.csv"))) {
+            for (Visitor visitor : Queue) {
+                writer.println(visitor.getName() + "," +
+                        visitor.getAge() + "," +
+                        visitor.getGender() + "," +
+                        visitor.getHeight() + "," +
+                        visitor.getTicketType() + "," +
+                        visitor.hasPassport());
             }
-            System.out.println("Ride history exported to " + fileName);
+            System.out.println("Visitors exported to History.csv");
         } catch (IOException e) {
-            System.out.println("Error exporting ride history: " + e.getMessage());
+            System.out.println("Error exporting visitors: " + e.getMessage());
         }
+
+
     }
-    public LinkedList<Visitor> getRideHistory() {
-        return rideHistory;
+
+    public  void  outToHistory() throws IOException {
+        System.out.println("----------The following is the history record saving file reading-----------");
+      FileInputStream READ= new FileInputStream("History.csv");
+      BufferedInputStream BI = new BufferedInputStream(READ);
+      byte[] buffer = new byte[1024*8];
+      int len;
+
+
+      while((len = BI.read(buffer))!=-1){
+          System.out.print(new String(buffer,0,len));
+
+      }
+
     }
-    public void importRideHistory(String fileName) {
-        rideHistory.clear(); // Clear existing history before importing
-        try (Scanner scanner = new Scanner(new File(fileName))) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                String[] data = line.split(",");
-                if (data.length == 7) {
-                    Visitor visitor = new Visitor(data[0], Integer.parseInt(data[1]), data[2],
-                            Double.parseDouble(data[3]), data[4], Boolean.parseBoolean(data[5]));
-                    visitor.setTimesOfPlay(Integer.parseInt(data[6]));
-                    rideHistory.add(visitor);
-                }
-            }
-            System.out.println("Ride history imported from " + fileName);
-        } catch (FileNotFoundException e) {
-            System.out.println("Error importing ride history: " + e.getMessage());
-        }
-    }
-    public void exportRideHistory2(String fileName) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-            for (Visitor visitor : rideHistory) {
-                writer.write(visitor.toString());
-                writer.newLine();
-            }
-            System.out.println("Ride history exported successfully to " + fileName);
-        } catch (IOException e) {
-            System.err.println("Error exporting ride history: " + e.getMessage());
-        }
-    }
+
+
+
+
+
 
     @Override
     public String toString() {
@@ -259,5 +275,14 @@ public class Ride implements RideInterface {
     @Override
     public int hashCode() {
         return Objects.hash(rideName, capacity, operator);
+    }
+
+    public void play(){
+        System.out.println("********************************************************");
+        System.out.println("*                                                      *");
+        System.out.println("*                      WELCOME                         *");
+        System.out.println("*                   HAPPY GAME GO !!!                  *");
+        System.out.println("*                                                      *");
+        System.out.println("********************************************************");
     }
 }

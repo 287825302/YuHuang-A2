@@ -1,8 +1,12 @@
-public class AssignmentTwo {
-    public static void main(String[] args) {
-        // 主方法，您可以在这里测试其他类
+import java.io.IOException;
 
-        partSix();
+public class AssignmentTwo {
+    public static void main(String[] args) throws IOException {
+        // 主方法，您可以在这里测试其他类
+        partFive();
+
+
+
     }
 
     public  static void partThree() {
@@ -125,7 +129,7 @@ public class AssignmentTwo {
         }
 
 
-    public static void partFive() {
+    public static void partFive() throws IOException {
         // 第五部分的代码将在这里实现
         System.out.println("Demonstrating Part 5 - Run a ride cycle");
 
@@ -157,66 +161,11 @@ public class AssignmentTwo {
 
         System.out.println("\nPrinting visitors in the ride history:");
         rollerCoaster.printRideHistory();
-    }
-
-
-    public static void demonstrateIO() {
-        System.out.println("\nDemonstrating Module 5 - Input/Output");
-
-        Employee operator = new Employee("Jane Smith", 30, "Female", 170.0, "EMP002", "Rides");
-        Ride ferrisWheel = new Ride("Giant Wheel", 30, operator, 6);
-
-        // 添加一些访客到乘坐历史
-        ferrisWheel.addVisitorToHistory(new Visitor("Alice", 25, "Female", 165.0, "Standard", true));
-        ferrisWheel.addVisitorToHistory(new Visitor("Bob", 30, "Male", 180.0, "VIP", false));
-        ferrisWheel.addVisitorToHistory(new Visitor("Charlie", 22, "Male", 175.0, "Standard", true));
-
-        System.out.println("Original ride history:");
-        ferrisWheel.printRideHistory();
-
-        // 导出乘坐历史
-        ferrisWheel.exportRideHistory("ferris_wheel_history.csv");
-
-        // 创建一个新的Ride对象来演示导入功能
-        Ride newFerrisWheel = new Ride("Giant Wheel", 30, operator, 6);
-
-        System.out.println("\nNew ride history before importing:");
-        newFerrisWheel.printRideHistory();
-
-        // 导入乘坐历史到新的Ride对象
-        newFerrisWheel.importRideHistory("ferris_wheel_history.csv");
-
-        System.out.println("\nNew ride history after importing:");
-        newFerrisWheel.printRideHistory();
+       rollerCoaster.outToHistory();
     }
 
 
 
-    public  static void partSix() {
-        // 第六部分的代码将在这里实现
-        System.out.println("\nDemonstrating Part 6 - Writing to a file");
 
-        // 创建一个新的Ride
-        Employee operator = new Employee("John Doe", 35, "Male", 180.0, "EMP001", "Rides");
-        Ride rollerCoaster = new Ride("Mega Coaster", 40, operator, 4);
-
-        // 添加至少5个访客到Ride
-        rollerCoaster.addVisitorToHistory(new Visitor("Alice", 25, "Female", 165.0, "Standard", true));
-        rollerCoaster.addVisitorToHistory(new Visitor("Bob", 30, "Male", 180.0, "VIP", false));
-        rollerCoaster.addVisitorToHistory(new Visitor("Charlie", 22, "Male", 175.0, "Standard", true));
-        rollerCoaster.addVisitorToHistory(new Visitor("Diana", 28, "Female", 170.0, "VIP", true));
-        rollerCoaster.addVisitorToHistory(new Visitor("Ethan", 33, "Male", 185.0, "Standard", false));
-
-        // 导出访客到文件
-        rollerCoaster.exportRideHistory("roller_coaster_history.txt");
-
-        // 打印当前的乘坐历史以验证
-        System.out.println("\nCurrent ride history:");
-        rollerCoaster.printRideHistory();
-    }
-
-    public void partSeven() {
-        // 第七部分的代码将在这里实现
-    }
 
 }

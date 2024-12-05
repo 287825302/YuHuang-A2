@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93d183d0-c6c6-481a-ba1c-224269b7c852" name="变更" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roller_coaster_history.txt" beforeDir="false" afterPath="$PROJECT_DIR$/roller_coaster_history.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AssignmentTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssignmentTwo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ride.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ride.java" afterDir="false" />
     </list>
@@ -27,6 +29,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2pfQ0En4sxZqR7HO4fwoqRljvPK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -55,7 +60,7 @@
       <option name="presentableId" value="Default" />
       <updated>1733154432570</updated>
       <workItem from="1733154433483" duration="3755000" />
-      <workItem from="1733281108688" duration="22709000" />
+      <workItem from="1733281108688" duration="32962000" />
     </task>
     <servers />
   </component>
