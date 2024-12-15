@@ -3,59 +3,68 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Ride implements RideInterface {
-    private String rideName;
-    private int capacity;
-    private Employee operator;
+    // Properties of the Ride class
+    private String rideName;  // Name of the ride
+    private int capacity;     // Maximum number of visitors the ride can accommodate at once
+    private Employee operator;  // Employee responsible for operating the ride
 
-    private int maxRider;
-    private int numOfCycles;
+    private int maxRider;     // Maximum number of riders allowed on the ride
+    private int numOfCycles;  // Number of times the ride has been cycled
 
+    // Default constructor
     public Ride() {
     }
 
-    private Queue<Visitor> waitingLine;
-    private Queue<Visitor> VipWaitingLine;
-    private LinkedList<Visitor> rideHistory;
+    // Data structures to manage visitors
+    private Queue<Visitor> waitingLine;     // Queue for regular visitors waiting in line
+    private Queue<Visitor> VipWaitingLine;  // Queue for VIP visitors waiting in line
+    private LinkedList<Visitor> rideHistory;  // List to keep track of visitors who have ridden
 
-    public Ride(String rideName, int capacity, Employee operator,int maxRider) {
+    // Constructor with all parameters including maxRider
+    public Ride(String rideName, int capacity, Employee operator, int maxRider) {
         this.rideName = rideName;
         this.capacity = capacity;
         this.operator = operator;
         this.maxRider = maxRider;
         this.numOfCycles = 0;
-        this.VipWaitingLine = new LinkedList<>();
-        this.waitingLine = new LinkedList<>();
-        this.rideHistory = new LinkedList<>();
+        this.VipWaitingLine = new LinkedList<>();  // Initialize VIP waiting line
+        this.waitingLine = new LinkedList<>();     // Initialize regular waiting line
+        this.rideHistory = new LinkedList<>();     // Initialize ride history
 
     }
 
+    // Constructor without maxRider parameter (sets default maxRider to 10)
     public Ride(String rideName, int capacity, Employee operator) {
         this.rideName = rideName;
         this.capacity = capacity;
         this.operator = operator;
-        this.maxRider = maxRider=10;
+        this.maxRider = maxRider = 10;  // Set default maxRider to 10
         this.numOfCycles = 0;
-        this.VipWaitingLine = new LinkedList<>();
-        this.waitingLine = new LinkedList<>();
-        this.rideHistory = new LinkedList<>();
+        this.VipWaitingLine = new LinkedList<>();  // Initialize VIP waiting line
+        this.waitingLine = new LinkedList<>();     // Initialize regular waiting line
+        this.rideHistory = new LinkedList<>();     // Initialize ride history
 
     }
 
+    // Getter method for ride name
     public String getRideName() {
         return rideName;
     }
 
+    // Setter method for ride name with input validation
     public void setRideName(String rideName) {
         if (rideName == null || rideName.trim().isEmpty()) {
             throw new IllegalArgumentException("Ride name cannot be null or empty");
         }
-        this.rideName = rideName.trim();
+        this.rideName = rideName.trim();  // Remove leading and trailing whitespace
     }
 
+    // Getter method for ride capacity
     public int getCapacity() {
         return capacity;
     }
 
+    // Setter method for ride capacity with input validation
     public void setCapacity(int capacity) {
         if (capacity < 0) {
             throw new IllegalArgumentException("Capacity must be non-negative");
@@ -63,10 +72,12 @@ public class Ride implements RideInterface {
         this.capacity = capacity;
     }
 
+    // Getter method for ride operator
     public Employee getOperator() {
         return operator;
     }
 
+    // Setter method for ride operator
     public void setOperator(Employee operator) {
         this.operator = operator;
     }
@@ -96,131 +107,148 @@ public class Ride implements RideInterface {
     }
 
     @Override
+// Method to print the current state of the waiting queues
     public void printQueue() {
+        // Display the name of the ride for which the queue information is being printed
         System.out.println("Waiting line for " + rideName + ":");
-        int v =0;
-        int c =0;
+
+        int v = 0;  // Counter for VIP visitors
+        int c = 0;  // Counter for common (non-VIP) visitors
+
+        // Iterate through and print all VIP visitors in the queue
         for (Visitor vip : VipWaitingLine){
             System.out.println(vip);
-            v++;
+            v++;  // Increment VIP counter
         }
         System.out.print("The above is the vip queue");
-        System.out.println("-------The number of VIP queue members is:"+v);
+        System.out.println("-------The number of VIP queue members is:" + v);
         System.out.println("----------------------------");
 
+        // Iterate through and print all common visitors in the queue
         for (Visitor visitor : waitingLine) {
             System.out.println(visitor);
-            c++;
+            c++;  // Increment common visitor counter
         }
         System.out.print("The above is the common queue");
-        System.out.println("-------The number of com queue members is:"+c);
+        System.out.println("-------The number of com queue members is:" + c);
         System.out.println("----------------------------");
     }
 
-
     @Override
+// Method to simulate one cycle of the ride
     public void runOneCycle() {
+        // Print decorative header for the ride cycle
         System.out.println("********************************************************");
         System.out.println("*                                                      *");
-        play();
+
+        play();  // Call the play method (likely to simulate the ride experience)
+
+        // Check if an operator is assigned to the ride
         if (operator == null) {
             System.out.println("No operator assigned. Ride cannot run.");
-            return;
+            return;  // Exit the method if no operator is assigned
         }
+
+        // Check if there are any visitors waiting in either queue
         if (VipWaitingLine.isEmpty() && waitingLine.isEmpty()) {
             System.out.println("No waiting visitors. Ride cannot run.");
-            return;
+            return;  // Exit the method if both queues are empty
         }
 
-        int ridersThisCycle = 0;
+        int ridersThisCycle = 0;  // Initialize counter for riders in this cycle
 
-
-        // 优先处理 VIP 队列
-        ridersThisCycle = Math.min(maxRider, VipWaitingLine.size());
+        // Process VIP queue first
+        ridersThisCycle = Math.min(maxRider, VipWaitingLine.size());  // Determine how many VIP visitors can ride
         for (int i = 0; i < ridersThisCycle; i++) {
-            Visitor rider = VipWaitingLine.poll();
-            addVisitorToHistory(rider);
+            Visitor rider = VipWaitingLine.poll();  // Remove and get the next VIP visitor
+            addVisitorToHistory(rider);  // Add the visitor to the ride history
         }
 
-        // 如果还有空位，处理普通队列
+        // Process common queue if there's remaining capacity
         int remainingCapacity = maxRider - ridersThisCycle;
         for (int i = 0; i < remainingCapacity && !waitingLine.isEmpty(); i++) {
-            Visitor rider = waitingLine.poll();
-            addVisitorToHistory(rider);
-            ridersThisCycle++;
+            Visitor rider = waitingLine.poll();  // Remove and get the next common visitor
+            addVisitorToHistory(rider);  // Add the visitor to the ride history
+            ridersThisCycle++;  // Increment the rider count
         }
 
-        numOfCycles++;
+        numOfCycles++;  // Increment the total number of cycles run
+        // Print summary of the completed cycle
         System.out.println("Ride cycle completed. " + ridersThisCycle + " visitors rode the " + rideName);
         System.out.println("*                                                      *");
         System.out.println("********************************************************");
-
     }
-
     @Override
     public void addVisitorToHistory(Visitor visitor) {
-        if (visitor.getTimesOfPlay()==0){
+        // Check if this is the visitor's first time on the ride
+        if (visitor.getTimesOfPlay() == 0) {
+            rideHistory.add(visitor);  // Add visitor to ride history
+        } else {
+            // Increment the visitor's play count and add to history
+            visitor.setTimesOfPlay(visitor.getTimesOfPlay() + 1);
             rideHistory.add(visitor);
-        }else {
-            visitor.setTimesOfPlay(visitor.getTimesOfPlay()+1);
-            rideHistory.add(visitor);
-
         }
 
-
+        // Attempt to export the updated ride history
         try {
             exportRideHistory(rideHistory);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e);  // If export fails, throw a RuntimeException
         }
-
-
     }
 
     @Override
     public boolean checkVisitorFromHistory(Visitor visitor) {
+        // Check if the given visitor is in the ride history
         return rideHistory.contains(visitor);
     }
 
     @Override
     public int numberOfVisitors() {
+        // Return the total number of visitors in the ride history
         return rideHistory.size();
     }
 
     @Override
     public void printRideHistory() {
+        // Check if ride history is empty
         if (rideHistory == null || rideHistory.isEmpty()) {
             System.out.println("No ride history available for " + rideName + ".");
             return;
         }
 
-        int vipNum = 0;
-        int noVipNum = 0;
+        int vipNum = 0;     // Counter for VIP visitors
+        int noVipNum = 0;   // Counter for non-VIP visitors
 
         System.out.println("Ride history for " + rideName + ":");
         Iterator<Visitor> iterator = rideHistory.iterator();
         while (iterator.hasNext()) {
             Visitor visitor = iterator.next();
             System.out.println(visitor);
+            // Count VIP and non-VIP visitors
             if (visitor.getTicketType().equalsIgnoreCase("VIP")) {
                 vipNum++;
-            }else {noVipNum++;}
+            } else {
+                noVipNum++;
+            }
         }
 
+        // Print summary of VIP and non-VIP visitors
         System.out.println("Total VIP visitors: " + vipNum);
         System.out.println("Total ordinary visitors: " + noVipNum);
     }
 
     public void sortVisitorHistory() {
+        // Sort the ride history using a custom VisitorComparator
         Collections.sort(rideHistory, new VisitorComparator());
         System.out.println("Visitor history has been sorted.");
     }
 
-
-    public void  exportRideHistory(List<Visitor> Queue) throws Exception{
-
+    public void exportRideHistory(List<Visitor> Queue) throws Exception {
+        // Export ride history to a CSV file
         try (PrintWriter writer = new PrintWriter(new FileWriter("History.csv"))) {
             for (Visitor visitor : Queue) {
+                // Write each visitor's details to the CSV file
                 writer.println(visitor.getName() + "," +
                         visitor.getAge() + "," +
                         visitor.getGender() + "," +
@@ -232,24 +260,22 @@ public class Ride implements RideInterface {
         } catch (IOException e) {
             System.out.println("Error exporting visitors: " + e.getMessage());
         }
-
-
     }
 
-    public  void  importRideHistory() throws IOException {
+    public void importRideHistory() throws IOException {
         System.out.println("----------The following is the history record saving file reading-----------");
-      FileInputStream READ= new FileInputStream("History.csv");
-      BufferedInputStream BI = new BufferedInputStream(READ);
-      byte[] buffer = new byte[1024*8];
-      int len;
+        // Read the contents of the History.csv file
+        FileInputStream READ = new FileInputStream("History.csv");
+        BufferedInputStream BI = new BufferedInputStream(READ);
+        byte[] buffer = new byte[1024 * 8];
+        int len;
 
-
-      while((len = BI.read(buffer))!=-1){
-          System.out.print(new String(buffer,0,len));
-
-      }
-
+        // Print the contents of the file
+        while ((len = BI.read(buffer)) != -1) {
+            System.out.print(new String(buffer, 0, len));
+        }
     }
+
 
 
 

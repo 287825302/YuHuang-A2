@@ -7,9 +7,16 @@
     <list default="true" id="93d183d0-c6c6-481a-ba1c-224269b7c852" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/YuHuang-A2/AssignmentTwo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/YuHuang-A2/AssignmentTwo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/YuHuang-A2/Ride.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/YuHuang-A2/Ride.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/YuHuang-A2/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/YuHuang-A2/Employee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/YuHuang-A2/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/YuHuang-A2/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/YuHuang-A2/Visitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/YuHuang-A2/Visitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/YuHuang-A2/VisitorComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/YuHuang-A2/VisitorComparator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AssignmentTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssignmentTwo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ride.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ride.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Visitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VisitorComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VisitorComparator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +38,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2pfQ0En4sxZqR7HO4fwoqRljvPK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -44,6 +51,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;A:/作业代写/yuantang/YuanTang&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -72,7 +80,8 @@
       <updated>1733154432570</updated>
       <workItem from="1733154433483" duration="3755000" />
       <workItem from="1733281108688" duration="33410000" />
-      <workItem from="1733390807313" duration="2289000" />
+      <workItem from="1733390807313" duration="8440000" />
+      <workItem from="1734240192827" duration="1759000" />
     </task>
     <servers />
   </component>
